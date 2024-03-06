@@ -1,0 +1,5 @@
+ifndef::maindir[:maindir: ../main]
+:planning-off: true
+:schema-off: true
+
+include::{maindir}/my-main.adoc[]

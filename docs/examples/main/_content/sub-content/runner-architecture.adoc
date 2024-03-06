@@ -1,0 +1,46 @@
+
+[plantuml, runners-architecture, svg]
+----
+skinparam actorStyle awesome
+actor developer
+
+rectangle GitLab {
+    agent Server as "Web Server"
+    database DB
+    storage artifacts
+    agent pages
+    Server .up.> DB
+    Server .up.> artifacts
+    Server .up.> pages
+}
+developer -left-> Server: push\ncode
+cloud rc as "remote cache"
+
+rectangle rsa as "Runner Server A" {
+  agent RunnerA
+  agent parallelJobA1 as pa1
+  agent parallelJobAn as pan
+  pa1 .left. pan
+  storage lcA as "local cache"
+  RunnerA --> pa1: launch
+  RunnerA --> pan: launch
+  pa1 --> lcA: by\ndefault
+  pa1 --> rc: when\nconfigured
+}
+RunnerA -up-> Server: pull jobs\n& artifacts
+RunnerA -up-> Server: push logs\n& artifacts
+
+rectangle rsb as "Runner Server B" {
+  agent RunnerB
+  agent parallelJobB1 as pb1
+  agent parallelJobBm as pbm
+  pb1 .right. pbm
+  storage lcB as "local cache"
+  RunnerB --> pb1: launch
+  RunnerB --> pbm: launch
+  pb1 --> lcB: by\ndefault
+  pb1 --> rc: when\nconfigured
+}
+RunnerB -up-> Server: pull jobs\n& artifacts
+RunnerB -up-> Server: push logs\n& artifacts
+----
