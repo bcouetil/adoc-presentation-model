@@ -23,9 +23,9 @@ ifdef::backend-revealjs[]
 === !
 endif::backend-revealjs[]
 
-ifndef::schema-off[]
+ifeval::[{include-schema} == true]
 === Architecture
 
 [.maxed-image]
 include::sub-content/runner-architecture.adoc[]
-endif::schema-off[]
+endif::[]

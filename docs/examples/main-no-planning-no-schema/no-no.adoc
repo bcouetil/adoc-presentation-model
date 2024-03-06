@@ -1,6 +1,6 @@
 // >>> when depending on another presentation, we must be alphabetically after (to be processed after) <<< //
 ifndef::maindir[:maindir: ../main]
-:planning-off: true
-:schema-off: true
+:include-planning: false
+:include-schema: false
 
 include::{maindir}/my-main.adoc[]

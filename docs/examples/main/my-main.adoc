@@ -5,8 +5,8 @@ ifndef::revealjs_customtheme[:revealjs_customtheme: ../../framework/themes/css/r
 :toc-title: Sommaire
 ifndef::maindir[:maindir: .]
 ifndef::imagesdir[:imagesdir: {maindir}/images]
-// :planning-off: true
-// :schema-off: true
+ifndef::include-planning[:include-planning: true]
+ifndef::include-schema[:include-schema: true]
 
 //This can't land on reveaj-js first slide...
 ifdef::backend-html5[]
@@ -24,14 +24,15 @@ toc::[]
 link:{docname}.pdf[icon:file-pdf-o[] PDF]  link:{docname}.html[icon:globe[] HTML]  link:../{docname}.adoc[icon:file-alt[] Source]
 endif::backend-revealjs[]
 
-ifndef::planning-off[]
+ifeval::[{include-planning} == true]
 
 == Planning
 
 * 09h30 - breakfast
 * 10h00 - ???
 * 17h00 - profit
-endif::planning-off[]
+
+endif::[]
 
 <<<
 include::_content/01_runners.adoc[]
