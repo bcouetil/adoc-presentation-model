@@ -8,12 +8,20 @@ ifndef::imagesdir[:imagesdir: {maindir}/images]
 // :planning-off: true
 // :schema-off: true
 
+//This can't land on reveaj-js first slide...
+ifdef::backend-html5[]
+link:{docname}.htm[icon:video-camera[] Slides]  link:{docname}.pdf[icon:file-pdf-o[] PDF] link:{docname}.adoc[icon:file-text-o[] Source]
+endif::backend-html5[]
+
 ifdef::backend-revealjs[]
 //We need to start a new chapter but 'toc' already provides a title
 [%notitle]
 == Sommaire
 toc::[]
 
+//...So we put this at the end of second slide
+[.bottom]
+link:{docname}.pdf[icon:file-pdf-o[] PDF]  link:{docname}.html[icon:globe[] HTML]  link:../{docname}.adoc[icon:file-alt[] Source]
 endif::backend-revealjs[]
 
 ifndef::planning-off[]
